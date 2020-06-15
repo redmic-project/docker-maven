@@ -3,22 +3,22 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <servers>
     <server>
-      <username>${env.MAVEN_REPO_USER}</username>
-      <password>${env.MAVEN_REPO_PASS}</password>
-      <id>central</id>
+      <username>${env.MAVEN_RELEASE_USER}</username>
+      <password>${env.MAVEN_RELEASE_PASS}</password>
+      <id>release</id>
     </server>
     <server>
-      <username>${env.MAVEN_REPO_USER}</username>
-      <password>${env.MAVEN_REPO_PASS}</password>
-      <id>snapshots</id>
+      <username>${env.MAVEN_SNAPSHOT_USER}</username>
+      <password>${env.MAVEN_SNAPSHOT_PASS}</password>
+      <id>snapshot</id>
     </server>
   </servers>
   <profiles>
     <profile>
       <id>artifactory</id>
       <properties>
-        <altSnapshotDeploymentRepository>snapshots::default::https://artifactory.redmic.net/artifactory/libs-snapshot-local</altSnapshotDeploymentRepository>
-        <altReleaseDeploymentRepository>central::default::https://artifactory.redmic.net/artifactory/libs-release-local</altReleaseDeploymentRepository>
+        <altReleaseDeploymentRepository>release::default::${env.MAVEN_RELEASE_URL}</altReleaseDeploymentRepository>
+        <altSnapshotDeploymentRepository>snapshot::default::${env.MAVEN_SNAPSHOT_URL}</altSnapshotDeploymentRepository>
       </properties>
     </profile>
   </profiles>
