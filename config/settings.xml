@@ -17,8 +17,8 @@
     <profile>
       <id>artifactory</id>
       <properties>
-        <altReleaseDeploymentRepository>release::default::${env.MAVEN_RELEASE_URL}</altReleaseDeploymentRepository>
-        <altSnapshotDeploymentRepository>snapshot::default::${env.MAVEN_SNAPSHOT_URL}</altSnapshotDeploymentRepository>
+        <altReleaseDeploymentRepository>release::default::${env.MAVEN_RELEASE_LOCAL_URL}</altReleaseDeploymentRepository>
+        <altSnapshotDeploymentRepository>snapshot::default::${env.MAVEN_SNAPSHOT_LOCAL_URL}</altSnapshotDeploymentRepository>
       </properties>
     </profile>
   </profiles>
