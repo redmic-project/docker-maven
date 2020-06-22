@@ -17,8 +17,8 @@
     <profile>
       <id>artifactory</id>
       <properties>
-        <altReleaseDeploymentRepository>redmic-release-local::${env.MAVEN_RELEASE_LOCAL_URL}</altReleaseDeploymentRepository>
-        <altSnapshotDeploymentRepository>redmic-snapshot-local::${env.MAVEN_SNAPSHOT_LOCAL_URL}</altSnapshotDeploymentRepository>
+        <altReleaseDeploymentRepository>redmic-release-local::default::${env.MAVEN_RELEASE_LOCAL_URL}</altReleaseDeploymentRepository>
+        <altSnapshotDeploymentRepository>redmic-snapshot-local::default::${env.MAVEN_SNAPSHOT_LOCAL_URL}</altSnapshotDeploymentRepository>
       </properties>
       <repositories>
         <repository>
