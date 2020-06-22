@@ -19,19 +19,27 @@
       <properties>
         <altReleaseDeploymentRepository>release::default::${env.MAVEN_RELEASE_LOCAL_URL}</altReleaseDeploymentRepository>
         <altSnapshotDeploymentRepository>snapshot::default::${env.MAVEN_SNAPSHOT_LOCAL_URL}</altSnapshotDeploymentRepository>
-        <mavenReleaseUrl>${env.MAVEN_RELEASE_URL}</mavenReleaseUrl>
-        <mavenSnapshotUrl>${env.MAVEN_SNAPSHOT_URL}</mavenSnapshotUrl>
       </properties>
       <repositories>
         <repository>
-          <id>release</id>
-          <name>libs-release</name>
-          <url>${mavenReleaseUrl}</url>
+          <id>confluent</id>
+          <name>Confluent</name>
+          <url>${env.MAVEN_CONFLUENT_URL}</url>
         </repository>
         <repository>
-          <id>snapshot</id>
+          <id>osgeo</id>
+          <name>Open Source Geospatial Foundation Repository</name>
+          <url>${env.MAVEN_GEOTOOLS_URL}</url>
+        </repository>
+        <repository>
+          <id>snapshots</id>
           <name>libs-snapshot</name>
-          <url>${mavenSnapshotUrl}</url>
+          <url>${env.MAVEN_SNAPSHOT_URL}</url>
+        </repository>
+        <repository>
+          <id>central</id>
+          <name>libs-release</name>
+          <url>${env.MAVEN_RELEASE_URL}</url>
         </repository>
       </repositories>
     </profile>
