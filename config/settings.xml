@@ -19,7 +19,21 @@
       <properties>
         <altReleaseDeploymentRepository>release::default::${env.MAVEN_RELEASE_LOCAL_URL}</altReleaseDeploymentRepository>
         <altSnapshotDeploymentRepository>snapshot::default::${env.MAVEN_SNAPSHOT_LOCAL_URL}</altSnapshotDeploymentRepository>
+        <mavenReleaseUrl>${env.MAVEN_RELEASE_URL}</mavenReleaseUrl>
+        <mavenSnapshotUrl>${env.MAVEN_SNAPSHOT_URL}</mavenSnapshotUrl>
       </properties>
+      <repositories>
+        <repository>
+          <id>release</id>
+          <name>libs-release</name>
+          <url>${mavenReleaseUrl}</url>
+        </repository>
+        <repository>
+          <id>snapshot</id>
+          <name>libs-snapshot</name>
+          <url>${mavenSnapshotUrl}</url>
+        </repository>
+      </repositories>
     </profile>
   </profiles>
   <activeProfiles>
