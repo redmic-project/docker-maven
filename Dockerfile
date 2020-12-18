@@ -1,4 +1,4 @@
-ARG MAVEN_VERSION=3.6.3-jdk-8
+ARG MAVEN_VERSION=3.6.3-jdk-8-slim
 FROM maven:${MAVEN_VERSION}
 
 LABEL maintainer="info@redmic.es"
@@ -23,10 +23,11 @@ ENV LANG=${LANG}
 
 ARG DOCKER_VERSION=20.10.1
 
-RUN wget -q -P /tmp/ "https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz" && \
-	tar -xf "/tmp/docker-${DOCKER_VERSION}.tgz" --directory /tmp/ && \
+RUN curl -s -o /tmp/docker.tgz \
+		"https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz" && \
+	tar -xf /tmp/docker.tgz --directory /tmp/ && \
 	mv /tmp/docker/docker /usr/local/bin && \
-	rm -rf "docker-${DOCKER_VERSION}.tgz" /tmp/docker
+	rm -rf docker.tgz /tmp/docker
 
 COPY config/settings.xml /root/.m2/
 
