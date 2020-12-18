@@ -1,0 +1,16 @@
+version: '3.5'
+
+services:
+  maven:
+    image: ${IMAGE_NAME:-registry.gitlab.com/redmic-project/docker/maven}:${IMAGE_TAG:-latest}
+    build:
+      context: .
+      dockerfile: ${DOCKERFILE:-Dockerfile}
+      args:
+        MAVEN_VERSION:
+        GDAL_BIN_VERSION:
+        LOCALES_VERSION:
+        LIBXML2_UTILS_VERSION:
+        DOCKER_VERSION:
+        LANG:
+        DIRPATH:
