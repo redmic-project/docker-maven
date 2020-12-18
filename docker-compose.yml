@@ -12,5 +12,5 @@ services:
         LOCALES_VERSION:
         LIBXML2_UTILS_VERSION:
         DOCKER_VERSION:
-        LANG:
+        LANG_VALUE:
         DIRPATH:

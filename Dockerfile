@@ -13,13 +13,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		libxml2-utils="${LIBXML2_UTILS_VERSION}" && \
 	rm -rf /var/lib/apt/lists/*
 
-ARG LANG=es_ES.UTF-8
+ARG LANG_VALUE=es_ES.UTF-8
 
-RUN sed -i -e "s/# ${LANG} UTF-8/${LANG} UTF-8/" /etc/locale.gen && \
+RUN sed -i -e "s/# ${LANG_VALUE} UTF-8/${LANG_VALUE} UTF-8/" /etc/locale.gen && \
 	dpkg-reconfigure --frontend=noninteractive locales && \
-	update-locale LANG="${LANG}"
+	update-locale LANG="${LANG_VALUE}"
 
-ENV LANG=${LANG}
+ENV LANG=${LANG_VALUE}
 
 ARG DOCKER_VERSION=20.10.1
 
