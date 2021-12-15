@@ -1,36 +1,26 @@
-ARG MAVEN_VERSION=3.6.3-jdk-8-slim
-FROM maven:${MAVEN_VERSION}
+ARG MAVEN_IMAGE_TAG=3.8.4-openjdk-8-slim
+FROM maven:${MAVEN_IMAGE_TAG}
 
 LABEL maintainer="info@redmic.es"
 
 ARG GDAL_BIN_VERSION=2.4.0+dfsg-1+b1 \
-	LOCALES_VERSION=2.28-10 \
-	LIBXML2_UTILS_VERSION=2.9.4+dfsg1-7+deb10u1
+	LIBXML2_UTILS_VERSION=2.9.10+dfsg-6.7 \
+	DOCKER_VERSION=20.10.11 \
+	DIRPATH=/opt/redmic \
+	MAVEN_OPTS="-Duser.country=ES -Duser.language=es"
+
+ENV MAVEN_OPTS=${MAVEN_OPTS}
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
 		gdal-bin="${GDAL_BIN_VERSION}" \
-		locales="${LOCALES_VERSION}" \
 		libxml2-utils="${LIBXML2_UTILS_VERSION}" && \
-	rm -rf /var/lib/apt/lists/*
-
-ARG LANG_VALUE=es_ES.UTF-8
-
-RUN sed -i -e "s/# ${LANG_VALUE} UTF-8/${LANG_VALUE} UTF-8/" /etc/locale.gen && \
-	dpkg-reconfigure --frontend=noninteractive locales && \
-	update-locale LANG="${LANG_VALUE}"
-
-ENV LANG=${LANG_VALUE}
-
-ARG DOCKER_VERSION=20.10.1
-
-RUN curl -s -o /tmp/docker.tgz \
+	rm -rf /var/lib/apt/lists/* && \
+	curl -s -o /tmp/docker.tgz \
 		"https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz" && \
 	tar -xf /tmp/docker.tgz --directory /tmp/ && \
 	mv /tmp/docker/docker /usr/local/bin && \
 	rm -rf docker.tgz /tmp/docker
 
 COPY config/settings.xml /root/.m2/
-
-ARG DIRPATH=/opt/redmic
 
 WORKDIR ${DIRPATH}

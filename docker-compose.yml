@@ -7,10 +7,9 @@ services:
       context: .
       dockerfile: ${DOCKERFILE:-Dockerfile}
       args:
-        MAVEN_VERSION:
+        MAVEN_IMAGE_TAG:
         GDAL_BIN_VERSION:
-        LOCALES_VERSION:
         LIBXML2_UTILS_VERSION:
         DOCKER_VERSION:
-        LANG_VALUE:
         DIRPATH:
+        MAVEN_OPTS:
