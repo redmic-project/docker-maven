@@ -11,7 +11,8 @@ ARG GDAL_BIN_VERSION=2.4.0+dfsg-1+b1 \
 
 ENV MAVEN_OPTS=${MAVEN_OPTS}
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN echo "deb http://deb.debian.org/debian buster main" >> /etc/apt/sources.list && \
+	apt-get update && apt-get install -y --no-install-recommends \
 		gdal-bin="${GDAL_BIN_VERSION}" \
 		libxml2-utils="${LIBXML2_UTILS_VERSION}" && \
 	rm -rf /var/lib/apt/lists/* && \
