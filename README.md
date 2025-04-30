@@ -1,3 +1,3 @@
 # maven
 
-Maven build environment for REDMIC server components 
+Maven build environment for REDMIC server components
